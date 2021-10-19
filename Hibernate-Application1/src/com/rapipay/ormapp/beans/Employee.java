@@ -1,12 +1,15 @@
 package com.rapipay.ormapp.beans;
 
 import java.io.Serializable;
+import java.util.List;
 
 import javax.persistence.AttributeOverride;
 import javax.persistence.AttributeOverrides;
 import javax.persistence.Column;
+import javax.persistence.ElementCollection;
 import javax.persistence.Embedded;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -14,10 +17,10 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name = "RapipayEmployee")
-public class Employee implements Serializable{
+public class Employee {
 	
 	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
 	private String name;
 	@Column(name="Employee_Salary",nullable = true)
@@ -36,6 +39,9 @@ public class Employee implements Serializable{
 			})
 	private Address currentAddress;
 	
+	@ElementCollection//(fetch = FetchType.EAGER)
+	private List<SalarySlip> salaryslips;
+	
 	
 	public Employee() {
 		super();
@@ -43,11 +49,25 @@ public class Employee implements Serializable{
 	}
 	
 	
-
+// ------------------------------------------------------
+	
+	
+	
+	
 	public int getAge() {
 		return age;
 	}
 
+
+
+	public List<SalarySlip> getSalaryslips() {
+		return salaryslips;
+	}
+
+
+	public void setSalaryslips(List<SalarySlip> salaryslips) {
+		this.salaryslips = salaryslips;
+	}
 
 
 	public void setAge(int age) {
