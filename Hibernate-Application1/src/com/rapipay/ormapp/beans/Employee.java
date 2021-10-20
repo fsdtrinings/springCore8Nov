@@ -13,6 +13,8 @@ import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 @Entity
@@ -28,6 +30,11 @@ public class Employee {
 	private String designation;
 	private int age;
 	
+	@ManyToOne
+	@JoinColumn(name="OrgName")
+	private Organisation org;
+	
+	/*
 	@Embedded
 	@Column(nullable = false)
 	private Address permanentAddress;
@@ -39,42 +46,16 @@ public class Employee {
 			})
 	private Address currentAddress;
 	
-	@ElementCollection//(fetch = FetchType.EAGER)
+	@ElementCollection(fetch = FetchType.EAGER)
 	private List<SalarySlip> salaryslips;
 	
-	
+	*/
 	public Employee() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
 	
 	
-// ------------------------------------------------------
-	
-	
-	
-	
-	public int getAge() {
-		return age;
-	}
-
-
-
-	public List<SalarySlip> getSalaryslips() {
-		return salaryslips;
-	}
-
-
-	public void setSalaryslips(List<SalarySlip> salaryslips) {
-		this.salaryslips = salaryslips;
-	}
-
-
-	public void setAge(int age) {
-		this.age = age;
-	}
-
-
 
 	public Employee(String name, int salary, String designation) {
 		super();
@@ -82,28 +63,26 @@ public class Employee {
 		this.salary = salary;
 		this.designation = designation;
 	}
+
+// =====================  Getter & Setters ======
 	
 	
-
-	public Address getCurrentAddress() {
-		return currentAddress;
-	}
-
-	public void setCurrentAddress(Address currentAddress) {
-		this.currentAddress = currentAddress;
-	}
-
-	public Address getPermanentAddress() {
-		return permanentAddress;
-	}
-
-	public void setPermanentAddress(Address permanentAddress) {
-		this.permanentAddress = permanentAddress;
-	}
 
 	public int getId() {
 		return id;
 	}
+
+	public Organisation getOrg() {
+		return org;
+	}
+
+
+
+	public void setOrg(Organisation org) {
+		this.org = org;
+	}
+
+
 
 	public void setId(int id) {
 		this.id = id;
@@ -133,49 +112,20 @@ public class Employee {
 		this.designation = designation;
 	}
 
-	@Override
-	public int hashCode() {
-		final int prime = 31;
-		int result = 1;
-		result = prime * result + ((designation == null) ? 0 : designation.hashCode());
-		result = prime * result + id;
-		result = prime * result + ((name == null) ? 0 : name.hashCode());
-		result = prime * result + salary;
-		return result;
+	public int getAge() {
+		return age;
 	}
 
-	@Override
-	public boolean equals(Object obj) {
-		if (this == obj)
-			return true;
-		if (obj == null)
-			return false;
-		if (getClass() != obj.getClass())
-			return false;
-		Employee other = (Employee) obj;
-		if (designation == null) {
-			if (other.designation != null)
-				return false;
-		} else if (!designation.equals(other.designation))
-			return false;
-		if (id != other.id)
-			return false;
-		if (name == null) {
-			if (other.name != null)
-				return false;
-		} else if (!name.equals(other.name))
-			return false;
-		if (salary != other.salary)
-			return false;
-		return true;
-	}
-
-	@Override
-	public String toString() {
-		return "Employee [id=" + id + ", name=" + name + ", salary=" + salary + ", designation=" + designation + "]";
+	public void setAge(int age) {
+		this.age = age;
 	}
 	
 	
+// ------------------------------------------------------
+	
+	
+	
+
 	
 	
 

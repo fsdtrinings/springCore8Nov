@@ -31,9 +31,9 @@ public class MainClass {
 		Employee e = appUseCase.getEmployeeBasedOnId(8, hibernate);
 		System.out.println(e);
 		
-		
-		
-	
+		Employee e1 = appUseCase.getEmployeeBasedOnId(8, hibernate);
+		System.out.println(e1);
+		hibernate.close();
 	}//end main method
 	
 	public Employee getEmployeeBasedOnId(int id,Session hibernate)
@@ -41,9 +41,10 @@ public class MainClass {
 		Employee e = null;
 		
 		e = (Employee)hibernate.get(Employee.class,8);
-		hibernate.close();
-		List<SalarySlip> list = e.getSalaryslips();
-		System.out.println(list.size());
+		
+		/*
+		 * List<SalarySlip> list = e.getSalaryslips(); System.out.println(list.size());
+		 */
 		
 		return e;
 	}
@@ -61,7 +62,7 @@ public class MainClass {
 		
 		Transaction t = hibernate.beginTransaction();
 		
-		e.setSalaryslips(slips);
+		//e.setSalaryslips(slips);
 		hibernate.save(e);
 		
 		
