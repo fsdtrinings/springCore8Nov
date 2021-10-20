@@ -15,8 +15,11 @@ public class MainClass2 {
 
 		Configuration cfg = new Configuration();
 		SessionFactory factory = cfg.configure().buildSessionFactory();
-		Session hibernate = factory.openSession();   // hibernate - session
+		//Session hibernate = factory.openSession();   // hibernate - session
 		
+		
+		
+		/*
 		
 		
 		
@@ -48,12 +51,19 @@ public class MainClass2 {
 		t.commit();
 		hibernate.close();
 		System.out.println("--- done ---");
-		
+		*/
 		
 		Session hibernate2 = factory.openSession();   // hibernate - session
 		
 		Employee e = (Employee)hibernate2.get(Employee.class, 1);
 		System.out.println(e.getOrg().getOrgName());
+		// ---- 
+		hibernate2.close();
+		
+		e = (Employee)hibernate2.get(Employee.class, 1);
+		System.out.println(e.getName());
+		
+		
 		
 	}//end main
 
