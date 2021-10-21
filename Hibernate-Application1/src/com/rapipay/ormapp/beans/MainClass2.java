@@ -16,8 +16,7 @@ public class MainClass2 {
 		Configuration cfg = new Configuration();
 		SessionFactory factory = cfg.configure().buildSessionFactory();
 		//Session hibernate = factory.openSession();   // hibernate - session
-		
-		
+			
 		
 		/*
 		
@@ -59,11 +58,11 @@ public class MainClass2 {
 		System.out.println(e.getOrg().getOrgName());
 		// ---- 
 		hibernate2.close();
-		
-		e = (Employee)hibernate2.get(Employee.class, 1);
+		Session hibernate3 = factory.openSession();
+		e = (Employee)hibernate3.get(Employee.class, 1);
 		System.out.println(e.getName());
 		
-		
+		factory.close();
 		
 	}//end main
 

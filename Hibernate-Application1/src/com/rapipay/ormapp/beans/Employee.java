@@ -16,6 +16,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.NamedQuery;
 import javax.persistence.Table;
 
 import org.hibernate.annotations.Cache;
@@ -23,8 +24,10 @@ import org.hibernate.annotations.CacheConcurrencyStrategy;
 
 @Entity
 @Table(name = "RapipayEmployee")
-@Cacheable
+@Cacheable(value = true)
 @Cache(usage = CacheConcurrencyStrategy.READ_ONLY)
+
+@NamedQuery(name = "QueryForTotalEmpCount",query = "select count(e) from Employee e")
 public class Employee {
 	
 	@Id
@@ -124,6 +127,14 @@ public class Employee {
 
 	public void setAge(int age) {
 		this.age = age;
+	}
+
+
+
+	@Override
+	public String toString() {
+		return "Employee [id=" + id + ", name=" + name + ", salary=" + salary + ", designation=" + designation
+				+ ", age=" + age + ", org=" + org + "]";
 	}
 	
 	
