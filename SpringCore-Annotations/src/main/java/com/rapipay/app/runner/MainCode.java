@@ -3,6 +3,7 @@ package com.rapipay.app.runner;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
+import com.rapipay.app.model.NonBankingFinanceInsititurions;
 import com.rapipay.app.model.Product;
 
 public class MainCode {
@@ -28,7 +29,10 @@ public class MainCode {
 		
 		p2 = (Product)spring.getBean("laptop-3");
 		System.out.println(p2.getProductName()+" New Get bean cost "+p2.getCost());
-	
+		
+		
+		NonBankingFinanceInsititurions nbfi = (NonBankingFinanceInsititurions)p2.getEmi();
+		System.out.println("\n\n\n "+nbfi.getinfo());
 	
 	}
 }

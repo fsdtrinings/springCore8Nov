@@ -2,15 +2,24 @@ package com.rapipay.app.model;
 
 import javax.security.auth.Destroyable;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Scope;
+import org.springframework.stereotype.Component;
 
-
+@Component("laptop-3")
 public class Product {
 	
+	@Value("${laptop-name}")
 	private String productName;
 	private int productId;
+	@Value("2000")
 	private int cost;
+	@Autowired
+	@Qualifier("nbfi")
 	private EMI emi;
+	@Autowired
 	private DeliveryInfo deliveryInfo;
 	
 	public Product() {
@@ -59,6 +68,7 @@ public class Product {
 	public void setDeliveryInfo(DeliveryInfo deliveryInfo) {
 		this.deliveryInfo = deliveryInfo;
 	}
+	
 	
 	public void doInitThings()
 	{
