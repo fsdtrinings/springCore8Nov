@@ -5,10 +5,13 @@ import javax.security.auth.Destroyable;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.context.annotation.Lazy;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;
 
 @Component("laptop-3")
+@Scope("prototype")
+@Lazy
 public class Product {
 	
 	@Value("${laptop-name}")
@@ -20,6 +23,7 @@ public class Product {
 	@Qualifier("nbfi")
 	private EMI emi;
 	@Autowired
+	@Lazy
 	private DeliveryInfo deliveryInfo;
 	
 	public Product() {
