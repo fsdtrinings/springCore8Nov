@@ -2,11 +2,10 @@
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
-	<groupId>com.rapipay.app</groupId>
-	<artifactId>SpringCore1</artifactId>
+	<groupId>com.rapipay.aop</groupId>
+	<artifactId>AOPApp</artifactId>
 	<version>1</version>
-	
-	
+
 
 	<properties>
 		<springframework.version>5.0.3.RELEASE</springframework.version>
@@ -115,7 +114,47 @@
 			<artifactId>jaxb-api</artifactId>
 			<version>2.3.0</version>
 		</dependency>
+
+		<!-- Dependency for AOP start -->
+
+		<!-- https://mvnrepository.com/artifact/aspectj/aspectjweaver -->
+		<dependency>
+			<groupId>aspectj</groupId>
+			<artifactId>aspectjweaver</artifactId>
+			<version>1.5.3</version>
+		</dependency>
+
+		<!-- https://mvnrepository.com/artifact/cglib/cglib-full -->
+		<dependency>
+			<groupId>cglib</groupId>
+			<artifactId>cglib-full</artifactId>
+			<version>2.0.2</version>
+		</dependency>
+
+		<!-- https://mvnrepository.com/artifact/aspectj/aspectjrt -->
+		<dependency>
+			<groupId>aspectj</groupId>
+			<artifactId>aspectjrt</artifactId>
+			<version>1.5.3</version>
+		</dependency>
+
+
+		<!-- https://mvnrepository.com/artifact/org.aspectj/aspectjtools -->
+		<dependency>
+			<groupId>org.aspectj</groupId>
+			<artifactId>aspectjtools</artifactId>
+			<version>1.6.2</version>
+		</dependency>
+
+
+
+
+
 	</dependencies>
+
+
+
+
 	<repositories>
 		<repository>
 			<id>oracle</id>
@@ -124,4 +163,5 @@
 		</repository>
 	</repositories>
 
-	</project>
+
+</project>
